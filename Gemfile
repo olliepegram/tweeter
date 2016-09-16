@@ -15,6 +15,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Use acts_as_votable to enable likes and following for our users.
 gem 'acts_as_votable'
 
+gem "font-awesome-rails"
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
