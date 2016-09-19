@@ -1,58 +1,65 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tweets</h1>
+</br>
 <div class="container">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <p>User:
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-          		<div class="span4 well" style="padding-bottom:0">
-                      <form accept-charset="UTF-8" action="" method="POST">
-                          <textarea class="span4" id="new_message" name="new_message"
-                          placeholder="Type in your message" rows="5"></textarea>
-                          <h6 class="pull-right">320 characters remaining</h6>
-                          <button class="btn btn-info" type="submit">Post New Message</button>
-                      </form>
-                  </div>
-          	</div>
-
-            <% @tweets.each do |tweet| %>
-            <div class="col-md-offset-1 col-md-2"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                          <%= tweet.user.email %></br></br>
-                          <%= linkify_hashtags(tweet.message) %>
-                            <%= tweet.message %>
-                        </br>
-                    </br>
-                    <%= link_to 'Show', tweet %>
-                    <%= link_to 'Edit', edit_tweet_path(tweet) %>
-                    <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                    <% if current_user %>
-                    <%= link_to like_tweet_path(tweet), method: :put do %>
-                    <%= current_user.voted_as_when_voted_for(tweet) == true ? fa_icon("heart") : fa_icon("heart-o") %>
-                    <% end %>
-                <% else %>
-                    <%= fa_icon("heart-o") %>
-                    <% end %>
-
-                    <%= tweet.score %>
-
-                </div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>User:
+                </p>
             </div>
         </div>
     </div>
-    <% end %>
-</div>
-</div>
-</div>
-</div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control new-tweet message" id="exampleInputEmail1" placeholder="What's happening?">
+                    </div>
+                </form>
+                <button class="btn btn-primary pull-right">Tweet</button>
+                <span class="countdown pull-right"></span>
+            </div>
+        </div>
+    </div>
+    <% @tweets.each do |tweet| %>
+    <div class="col-md-offset-3 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <%= tweet.user.email %>
+                
+</br>
+        </br>
+        <%= linkify_hashtags(tweet.message) %>
+        <%= tweet.message %>
+    </br>
+  </br>
+  <%= link_to 'Show', tweet %>
+  <%= link_to 'Edit', edit_tweet_path(tweet) %>
+  <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <% if current_user %>
+  <%= link_to like_tweet_path(tweet), method: :put do %>
+  <%= current_user.voted_as_when_voted_for(tweet) == true ? fa_icon("heart") : fa_icon("heart-o") %>
+  <% end %>
+  <% else %>
+  <%= fa_icon("heart-o") %>
+  <% end %>
+
+<%= tweet.score %>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <!-- <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p>Side section</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
