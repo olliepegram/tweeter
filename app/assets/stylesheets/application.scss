@@ -17,3 +17,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+
+
+
+ .new-tweet {
+   -webkit-transition:height 0.3s ease-in-out;
+ }
+
+ .new-tweet:focus {
+   -webkit-transition:height 0.5s ease-in-out;
+   height:150px;
+ }
